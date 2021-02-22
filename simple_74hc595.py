@@ -139,6 +139,7 @@ class DigitalInOut:
 
 class stateful_74hc595(simple_74hc595):
     def __init__(self, data_pin, clock_pin, latch_pin, initial_state=0):
+        assert 0 <= initial_state <= 255
         super().__init__(
             data_pin, clock_pin, latch_pin
         )
