@@ -32,11 +32,25 @@ __repo__ = "https://github.com/LennartPiro/simple_CircuitPython_74HC595"
 
 class simple_74hc595:
     def __init__(self, data_pin, clock_pin, latch_pin):
-        self.data_pin = digitalio.DigitalInOut(data_pin)
+        def is_inout_pin(pin):
+            return hasattr(pin, 'direction') and hasattr(pin, 'value')
+
+        if is_inout_pin(data_pin):
+            self.data_pin = data_pin
+        else:
+            self.data_pin = digitalio.DigitalInOut(data_pin)
         self.data_pin.direction = digitalio.Direction.OUTPUT
-        self.clock_pin = digitalio.DigitalInOut(clock_pin)
+
+        if is_inout_pin(clock_pin):
+            self.clock_pin = clock_pin
+        else:
+            self.clock_pin = digitalio.DigitalInOut(clock_pin)
         self.clock_pin.direction = digitalio.Direction.OUTPUT
-        self.latch_pin = digitalio.DigitalInOut(latch_pin)
+
+        if is_inout_pin(latch_pin):
+            self.latch_pin = latch_pin
+        else:
+            self.latch_pin = digitalio.DigitalInOut(latch_pin)
         self.latch_pin.direction = digitalio.Direction.OUTPUT
 
         self.end_push_values()
