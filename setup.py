@@ -23,17 +23,17 @@ with open(path.join(here, "README.rst"), encoding="utf-8") as f:
     long_description = f.read()
 
 setup(
-    name="adafruit-circuitpython-74hc595",
+    name="simple-circuitpython-74hc595",
     use_scm_version=True,
     setup_requires=["setuptools_scm"],
-    description="CircuitPython driver for 74HC595 shift register.",
+    description="CircuitPython driver for 74HC595 shift register using simple GPIO only, no SPI.",
     long_description=long_description,
     long_description_content_type="text/x-rst",
     # The project's main homepage.
-    url="https://github.com/adafruit/Adafruit_CircuitPython_74HC595",
+    url="https://github.com/LennartPiro/simple_CircuitPython_74HC595",
     # Author details
-    author="Adafruit Industries",
-    author_email="circuitpython@adafruit.com",
+    author="Lennart Piro",
+    author_email="lennart.k.piro@gmail.com",
     install_requires=["Adafruit-Blinka", "adafruit-circuitpython-busdevice"],
     # Choose your license
     license="MIT",
@@ -52,5 +52,5 @@ setup(
     keywords="adafruit shift register 74hc595 hardware micropython circuitpython",
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
-    py_modules=["adafruit_74hc595"],
+    py_modules=["simple_74hc595"],
 )

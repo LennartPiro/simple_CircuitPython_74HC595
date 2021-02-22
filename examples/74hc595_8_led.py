@@ -4,10 +4,10 @@
 import time
 import board
 import digitalio
-import adafruit_74hc595
+import simple_74hc595
 
 latch_pin = digitalio.DigitalInOut(board.D5)
-sr = adafruit_74hc595.ShiftRegister74HC595(board.SPI(), latch_pin)
+sr = simple_74hc595.ShiftRegister74HC595(board.SPI(), latch_pin)
 
 # Create the pin objects in a list
 pins = [sr.get_pin(n) for n in range(8)]
