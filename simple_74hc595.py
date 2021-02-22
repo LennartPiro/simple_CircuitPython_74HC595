@@ -53,36 +53,36 @@ class simple_74hc595:
             self.latch_pin = digitalio.DigitalInOut(latch_pin)
         self.latch_pin.direction = digitalio.Direction.OUTPUT
 
-        self.end_push_values()
+        self._end_push_values()
 
-    def push_bit(self, value):
+    def _push_bit(self, value):
         self.clock_pin.value = False
         self.data_pin.value = value
         self.clock_pin.value = True
 
-    def begin_push_values(self):
+    def _begin_push_values(self):
         self.clock_pin.value = False
         self.latch_pin.value = False
         self.clock_pin.value = True
 
-    def end_push_values(self):
+    def _end_push_values(self):
         self.clock_pin.value = False
         self.latch_pin.value = True
         self.clock_pin.value = True
 
     def write_byte(self, value):
         assert 0 <= value <= 255
-        self.begin_push_values()
+        self._begin_push_values()
         for i in range(8):
-            self.push_bit((value >> (7 - i)) & 1)
-        self.end_push_values()
+            self._push_bit((value >> (7 - i)) & 1)
+        self._end_push_values()
 
     def write_byte_array(self, values):
         assert len(values) == 8
-        self.begin_push_values()
+        self._begin_push_values()
         for v in values:
-            self.push_bit(v)
-        self.end_push_values()
+            self._push_bit(v)
+        self._end_push_values()
 
 
 class DigitalInOut:
