@@ -5,7 +5,7 @@ import time
 import board
 import simple_74hc595
 
-sr = simple_74hc595.stateful_74hc595(board.GP2, board.GP3, goard.GP4)
+sr = simple_74hc595.stateful_74hc595(board.GP2, board.GP3, board.GP4)
 
 # Create the pin objects in a list
 pins = [sr.get_pin(n) for n in range(8)]
