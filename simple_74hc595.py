@@ -165,4 +165,4 @@ class stateful_74hc595(simple_74hc595):
         # pointing at the specified pin of this 74HC595 device .
         # """
         assert 0 <= pin <= 7
-        return DigitalInOut74HC595(pin, self)
+        return DigitalInOut(pin, self)
