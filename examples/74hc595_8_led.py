@@ -3,11 +3,9 @@
 
 import time
 import board
-import digitalio
 import simple_74hc595
 
-latch_pin = digitalio.DigitalInOut(board.D5)
-sr = simple_74hc595.ShiftRegister74HC595(board.SPI(), latch_pin)
+sr = simple_74hc595.stateful_74hc595(board.GP2, board.GP3, goard.GP4)
 
 # Create the pin objects in a list
 pins = [sr.get_pin(n) for n in range(8)]

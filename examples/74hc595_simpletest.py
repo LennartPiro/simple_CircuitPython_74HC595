@@ -3,14 +3,9 @@
 
 import time
 import board
-import busio
-import digitalio
 import simple_74hc595
 
-spi = busio.SPI(board.SCK, MOSI=board.MOSI)
-
-latch_pin = digitalio.DigitalInOut(board.D5)
-sr = simple_74hc595.ShiftRegister74HC595(spi, latch_pin)
+sr = simple_74hc595.stateful_74hc595(board.GP2, board.GP3, goard.GP4)
 
 pin1 = sr.get_pin(1)
 
