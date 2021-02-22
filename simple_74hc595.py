@@ -167,3 +167,11 @@ class stateful_74hc595(simple_74hc595):
         # """
         assert 0 <= pin <= 7
         return DigitalInOut(pin, self)
+
+    def write_byte_array(self, values):
+        super().write_byte_array(values)
+        self.pin_state = sum((1<<i) if values[7 - i] else 0 for i in range(8))
+
+    def write_byte(self, value):
+        super().write_byte(value)
+        self.pin_state = value
